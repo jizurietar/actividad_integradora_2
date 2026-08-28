@@ -1,0 +1,16 @@
+[
+  {
+    "id": "1",
+    "name": "Ana Pérez",
+    "email": "ana@email.com",
+    "password": "1234",
+    "avatarUrl": "https://www.flaticon.es/icono-gratis/mujer_6889375?term=avatar&page=1&position=24&origin=search&related_id=6889375"
+  },
+  {
+    "id": "2",
+    "name": "Carlos Gómez",
+    "email": "carlos@email.com",
+    "password": "5678",
+    "avatarUrl": "https://www.flaticon.es/icono-gratis/hombre_4691232?term=avatar&page=1&position=28&origin=search&related_id=4691232"
+  }
+]
