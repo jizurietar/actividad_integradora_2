@@ -21,4 +21,6 @@ flutter:
   assets:
     - assets/data/users.json
     - assets/data/products.json
+    - assets/images/logo.png
+
 
