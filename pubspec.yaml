@@ -24,5 +24,11 @@ flutter:
     - assets/images/logo.png
     - assets/images/ana.png
     - assets/images/carlos.png
+    - assets/images/auricular.png
+    - assets/images/monitor_4k.png
+    - assets/images/laptop.png
+    - assets/images/mouse.png
+    - assets/images/teclado.png
+    - assets/images/smartphone.png
 
 

@@ -3,42 +3,42 @@
     "id": "p1",
     "name": "Laptop Gamer",
     "price": 899.99,
-    "imageUrl": "https://www.flaticon.es/sticker-gratis/computadora-portatil_8060665?term=laptop&page=1&position=4&origin=search&related_id=8060665",
+    "imageUrl": "assets/images/laptop.png",
     "description": "Potente laptop con RTX 4060 y 16GB RAM."
   },
   {
     "id": "p2",
     "name": "Auriculares Bluetooth",
     "price": 59.99,
-    "imageUrl": "https://www.flaticon.es/sticker-gratis/escuchando_9821849?term=audifono&page=1&position=3&origin=search&related_id=9821849",
+    "imageUrl": "assets/images/auricular.png",
     "description": "Sonido envolvente y cancelación de ruido."
   },
   {
     "id": "p3",
     "name": "Smartphone Pro",
     "price": 699.00,
-    "imageUrl": "https://www.flaticon.es/sticker-gratis/aplicacion-de-restaurante_7506749?term=smartphone&page=1&position=8&origin=search&related_id=7506749",
+    "imageUrl": "assets/images/smartphone.png",
     "description": "Pantalla 6.7\", cámara 108MP y batería 5000mAh."
   },
   {
     "id": "p4",
     "name": "Mouse Inalámbrico",
     "price": 29.99,
-    "imageUrl": "https://www.flaticon.es/sticker-gratis/clicker-del-mouse_6558592?term=mouse&page=1&position=2&origin=search&related_id=6558592",
+    "imageUrl": "assets/images/mouse.png",
     "description": "Ergonómico, silencioso y con batería de 1 año."
   },
   {
     "id": "p5",
     "name": "Monitor 4K",
     "price": 349.99,
-    "imageUrl": "https://www.flaticon.es/sticker-gratis/monitor_8136935?term=monitor&page=1&position=15&origin=search&related_id=8136935",
+    "imageUrl": "assets/images/monitor_4k.png",
     "description": "Ultra HD, 32 pulgadas, HDR10."
   },
   {
     "id": "p6",
     "name": "Teclado Mecánico",
     "price": 89.99,
-    "imageUrl": "https://www.flaticon.es/sticker-gratis/teclado_11946302?term=teclado&page=1&position=1&origin=search&related_id=11946302",
+    "imageUrl": "assets/images/teclado.png",
     "description": "RGB, switches rojos, diseño compacto."
   }
 ]
