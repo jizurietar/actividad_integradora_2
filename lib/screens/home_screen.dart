@@ -4,6 +4,8 @@ import '../models/user.dart';
 import '../services/data_service.dart';
 import '../services/order_service.dart';
 import '../utils/constants.dart';
+import '../widgets/product_card.dart';
+import 'cart_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -80,7 +82,10 @@ class _HomeScreenState extends State<HomeScreen> {
         itemCount: DataService.products.length,
         itemBuilder: (context, index) {
           final product = DataService.products[index];
-          return null;
+          return ProductCard(
+            product: product,
+            onAddToCart: () => _addToCart(product),
+          );
         },
       ),
       floatingActionButton: FloatingActionButton(
