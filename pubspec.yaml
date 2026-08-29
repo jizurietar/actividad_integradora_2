@@ -22,5 +22,7 @@ flutter:
     - assets/data/users.json
     - assets/data/products.json
     - assets/images/logo.png
+    - assets/images/ana.png
+    - assets/images/carlos.png
 
 
