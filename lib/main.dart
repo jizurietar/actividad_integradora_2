@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
-import 'services/data_service.dart';
-import 'utils/constants.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'screens/login_screen.dart';
 import 'screens/home_screen.dart';
+import 'screens/cart_screen.dart';
+import 'screens/orders_screen.dart';
+import 'services/data_service.dart';
+import 'utils/constants.dart';
+import 'models/product.dart';
 
 void main() async {
   //Inicializa y conecta el motor de Flutter
@@ -41,6 +45,13 @@ class MainApp extends StatelessWidget {
       routes: {
         AppRoutes.login: (context) => const LoginScreen(),
         AppRoutes.home: (context) => const HomeScreen(),
+        AppRoutes.cart: (context) {
+          // Extraer argumentos (carrito)
+          final args =
+              ModalRoute.of(context)!.settings.arguments as List? ?? [];
+          return CartScreen(cartItems: args.cast<Product>());
+        },
+        AppRoutes.orders: (context) => const OrdersScreen(),
       },
       //home: const Scaffold(body: Center(child: Text('Hello World!'))),
     );
