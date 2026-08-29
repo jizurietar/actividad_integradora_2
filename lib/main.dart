@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'services/data_service.dart';
 import 'utils/constants.dart';
 import 'screens/login_screen.dart';
+import 'screens/home_screen.dart';
 
 void main() async {
   //Inicializa y conecta el motor de Flutter
@@ -38,7 +38,10 @@ class MainApp extends StatelessWidget {
         ),
       ),
       initialRoute: AppRoutes.login,
-      routes: {AppRoutes.login: (context) => const LoginScreen()},
+      routes: {
+        AppRoutes.login: (context) => const LoginScreen(),
+        AppRoutes.home: (context) => const HomeScreen(),
+      },
       //home: const Scaffold(body: Center(child: Text('Hello World!'))),
     );
   }

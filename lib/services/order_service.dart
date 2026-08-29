@@ -3,7 +3,7 @@ import '../models/product.dart';
 
 class OrderService {
   // Lista estática en memoria para todas las órdenes
-  static List<Order> _orders = [];
+  static final List<Order> _orders = [];
 
   static List<Order> get orders => _orders;
 

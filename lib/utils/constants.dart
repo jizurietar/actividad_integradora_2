@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class AppColors {
   static const Color primary = Color(0xFF0A2647); // azul marino
