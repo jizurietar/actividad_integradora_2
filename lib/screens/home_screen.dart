@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../screens/login_screen.dart';
 import '../models/product.dart';
 import '../models/user.dart';
 import '../services/data_service.dart';
@@ -50,6 +52,43 @@ class _HomeScreenState extends State<HomeScreen> {
     Navigator.pushNamed(context, AppRoutes.cart, arguments: _cart);
   }
 
+  // Función para cerrar sesión
+  Future<void> _logout() async {
+    // Mostrar diálogo de confirmación
+    final confirm = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Cerrar sesión'),
+        content: const Text('¿Estás seguro de que deseas salir?'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: const Text('Cancelar'),
+          ),
+          ElevatedButton(
+            onPressed: () => Navigator.pop(context, true),
+            style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+            child: const Text('Salir'),
+          ),
+        ],
+      ),
+    );
+    if (confirm == true) {
+      // Limpiar sesión guardada en SharedPreferences
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.remove('user_email');
+
+      // Navegar a la pantalla de login y eliminar el historial
+      if (mounted) {
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context) => const LoginScreen()),
+          (route) => false,
+        );
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,11 +104,19 @@ class _HomeScreenState extends State<HomeScreen> {
             },
             tooltip: 'Mis órdenes',
           ),
-          CircleAvatar(
+          GestureDetector(
+            onTap: _logout, // Al tocar el avatar, ejecuta el logout
+            child: CircleAvatar(
+              radius: 16,
+              backgroundImage: NetworkImage(_currentUser.avatarUrl),
+            ),
+          ),
+          const SizedBox(width: 8),
+          /*CircleAvatar(
             radius: 16,
             backgroundImage: NetworkImage(_currentUser.avatarUrl),
           ),
-          const SizedBox(width: 8),
+          const SizedBox(width: 8),*/
         ],
       ),
       body: GridView.builder(
