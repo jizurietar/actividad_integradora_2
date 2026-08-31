@@ -55,7 +55,8 @@ Se utiliza `setState` en:
 - **Colores**: azul marino (`#0A2647`) como primario y dorado (`#D4AF37`) como secundario.
 
 ### Capturas de pantalla
-*(Inserta aquí las capturas de Login, Home, Carrito y Órdenes)*
+- **Inicio de la app**
+![alt text](image.png)
 
 ### Instrucciones para ejecutar
 1. Clonar el repositorio.
