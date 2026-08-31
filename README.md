@@ -102,3 +102,6 @@ Se utiliza `setState` en:
 5. Usar las credenciales de prueba:
    - `ana@email.com` / `1234`
    - `carlos@email.com` / `5678`
+
+## Autor
+**JAIME DAVID IZURIETA ROSERO**
