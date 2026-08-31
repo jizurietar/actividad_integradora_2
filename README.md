@@ -57,6 +57,8 @@ Se utiliza `setState` en:
 ### Capturas de pantalla
 - **Vista principal de bienvenida y acceso a la interfaz de usuario**
 
+![0](capturas/image00.png)
+
 ![A](capturas/image01.png)
 
 - **Implementación del módulo de autenticación y validación de credenciales con datos locales en formato JSON**
