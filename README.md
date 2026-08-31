@@ -55,6 +55,8 @@ Se utiliza `setState` en:
 - **Colores**: azul marino (`#0A2647`) como primario y dorado (`#D4AF37`) como secundario.
 
 ### Capturas de pantalla
+- **Inicio de la app**
+
 - ![Inicio de la app](image.png)
 
 ### Instrucciones para ejecutar
