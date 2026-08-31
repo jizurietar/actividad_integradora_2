@@ -57,7 +57,38 @@ Se utiliza `setState` en:
 ### Capturas de pantalla
 - **Inicio de la app**
 
-![Inicio de la app](image.png)
+![Inicio de la app](capturas/image01.png)
+
+- **Creacion del login y validacion de datos json**
+
+![Creacion del login y validacion de datos json](capturas/image02.png)
+
+- **Creacion del Home / pantalla de catalogo**
+
+![Creacion del Home / pantalla de catalogo](capturas/image03.png)
+
+- **Obteniendo la lista de productos, que estan en json**
+
+![Obteniendo la lista de productos, que estan en json](capturas/image04.png)
+
+
+- **Agregando la funcion de add car para agregar articulos**
+
+![Agregando la funcion de add car para agregar articulos](capturas/image05.png)
+
+- **Viendo el carrito de compra por orden**
+
+![Viendo el carrito de compra por orden](capturas/image06.png)
+
+- **Primero confirmamos el pedido de compra de la orden y estara en estado pendiente**
+
+![Primero confirmamos el pedido de compra de la orden y estara en estado pendiente](capturas/image07.png)
+
+- **Ahora se confimara o negara la orden a comprar**
+
+![Ahora se confimara o negara la orden a comprar](capturas/image08.png)
+
+![Orden confirmada](capturas/image09.png)
 
 ### Instrucciones para ejecutar
 1. Clonar el repositorio.
