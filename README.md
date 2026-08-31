@@ -55,40 +55,42 @@ Se utiliza `setState` en:
 - **Colores**: azul marino (`#0A2647`) como primario y dorado (`#D4AF37`) como secundario.
 
 ### Capturas de pantalla
-- **Inicio de la app**
+- **Vista principal de bienvenida y acceso a la interfaz de usuario**
 
-![Inicio de la app](capturas/image01.png)
+![A](capturas/image01.png)
 
-- **Creacion del login y validacion de datos json**
+- **Implementación del módulo de autenticación y validación de credenciales con datos locales en formato JSON**
 
-![Creacion del login y validacion de datos json](capturas/image02.png)
+![B](capturas/image02.png)
 
-- **Creacion del Home / pantalla de catalogo**
+- **C Desarrollo de la vista de inicio donde se listan los artículos disponibles para la compra**
 
-![Creacion del Home / pantalla de catalogo](capturas/image03.png)
+![C](capturas/image03.png)
 
-- **Obteniendo la lista de productos, que estan en json**
+- **Carga asíncrona de los datos del catálogo consumiendo el recurso JSON interno**
 
-![Obteniendo la lista de productos, que estan en json](capturas/image04.png)
+![D](capturas/image04.png)
 
 
-- **Agregando la funcion de add car para agregar articulos**
+- **Implementación de la lógica "Agregar al carrito" para añadir artículos seleccionados**
 
-![Agregando la funcion de add car para agregar articulos](capturas/image05.png)
+![E](capturas/image05.png)
 
-- **Viendo el carrito de compra por orden**
+- **Visualización detallada del carrito de compras, mostrando los artículos añadidos y sus cantidades**
 
-![Viendo el carrito de compra por orden](capturas/image06.png)
+![F](capturas/image06.png)
 
-- **Primero confirmamos el pedido de compra de la orden y estara en estado pendiente**
+- **Confirmación inicial del pedido; la orden de compra se registra automáticamente con estado "Pendiente"**
 
-![Primero confirmamos el pedido de compra de la orden y estara en estado pendiente](capturas/image07.png)
+![G](capturas/image07.png)
 
-- **Ahora se confimara o negara la orden a comprar**
+- **Flujo de administración para confirmar o rechazar la orden de compra generada**
 
-![Ahora se confimara o negara la orden a comprar](capturas/image08.png)
+![H](capturas/image08.png)
 
-![Orden confirmada](capturas/image09.png)
+- **Confirmación exitosa del pedido. La orden actualiza su estado a "Confirmada"**
+
+![I](capturas/image09.png)
 
 ### Instrucciones para ejecutar
 1. Clonar el repositorio.
