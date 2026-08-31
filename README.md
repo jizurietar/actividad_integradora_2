@@ -56,7 +56,7 @@ Se utiliza `setState` en:
 
 ### Capturas de pantalla
 - **Inicio de la app**
-![Inicio de la app](image.png)
+- ![Inicio de la app](image.png)
 
 ### Instrucciones para ejecutar
 1. Clonar el repositorio.
