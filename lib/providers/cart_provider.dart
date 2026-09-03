@@ -20,6 +20,7 @@ class CartProvider extends ChangeNotifier {
   int get itemCount => _quantities.values.fold(0, (sum, qty) => sum + qty);
 
   void addToCart(Product product) {
+    debugPrint('Adding product to cart: ${product.name}');
     if (_items.any((p) => p.id == product.id)) {
       _quantities[product.id] = (_quantities[product.id] ?? 0) + 1;
     } else {
@@ -30,11 +31,13 @@ class CartProvider extends ChangeNotifier {
   }
 
   void increment(String productId) {
+    debugPrint('Incrementing product in cart: $productId');
     _quantities[productId] = (_quantities[productId] ?? 0) + 1;
     notifyListeners();
   }
 
   void decrement(String productId) {
+    debugPrint('Decrementing product in cart: $productId');
     if (_quantities[productId] != null && _quantities[productId]! > 1) {
       _quantities[productId] = _quantities[productId]! - 1;
     } else {

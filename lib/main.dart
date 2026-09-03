@@ -53,12 +53,7 @@ class MainApp extends StatelessWidget {
       routes: {
         AppRoutes.login: (context) => const LoginScreen(),
         AppRoutes.home: (context) => const HomeScreen(),
-        AppRoutes.cart: (context) {
-          // Extraer argumentos (carrito)
-          final args =
-              ModalRoute.of(context)!.settings.arguments as List? ?? [];
-          return CartScreen(cartItems: args.cast<Product>());
-        },
+        AppRoutes.cart: (context) => const CartScreen(),
         AppRoutes.orders: (context) => const OrdersScreen(),
       },
       //home: const Scaffold(body: Center(child: Text('Hello World!'))),

@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../screens/login_screen.dart';
-import '../models/product.dart';
 import '../models/user.dart';
 import '../services/data_service.dart';
-import '../services/order_service.dart';
+import '../providers/cart_provider.dart';
 import '../utils/constants.dart';
 import '../widgets/product_card.dart';
-import 'cart_screen.dart';
-import 'orders_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -19,9 +17,6 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   late User _currentUser;
-
-  // Carrito local (lista de productos seleccionados)
-  final List<Product> _cart = [];
 
   @override
   void initState() {
@@ -35,26 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
     _currentUser = DataService.users.first;
   }
 
-  void _addToCart(Product product) {
-    setState(() {
-      _cart.add(product);
-    });
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('${product.name} agregado al carrito'),
-        backgroundColor: AppColors.primary,
-        duration: const Duration(seconds: 2),
-      ),
-    );
-  }
-
-  void _goToCart() {
-    Navigator.pushNamed(context, AppRoutes.cart, arguments: _cart);
-  }
-
-  // Función para cerrar sesión
   Future<void> _logout() async {
-    // Mostrar diálogo de confirmación
     final confirm = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
@@ -74,11 +50,8 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
     if (confirm == true) {
-      // Limpiar sesión guardada en SharedPreferences
       final prefs = await SharedPreferences.getInstance();
       await prefs.remove('user_email');
-
-      // Navegar a la pantalla de login y eliminar el historial
       if (mounted) {
         Navigator.pushAndRemoveUntil(
           context,
@@ -91,6 +64,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final cart = context.watch<CartProvider>();
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Catálogo'),
@@ -105,18 +80,13 @@ class _HomeScreenState extends State<HomeScreen> {
             tooltip: 'Mis órdenes',
           ),
           GestureDetector(
-            onTap: _logout, // Al tocar el avatar, ejecuta el logout
+            onTap: _logout,
             child: CircleAvatar(
               radius: 16,
-              backgroundImage: NetworkImage(_currentUser.avatarUrl),
+              backgroundImage: AssetImage(_currentUser.avatarUrl),
             ),
           ),
           const SizedBox(width: 8),
-          /*CircleAvatar(
-            radius: 16,
-            backgroundImage: NetworkImage(_currentUser.avatarUrl),
-          ),
-          const SizedBox(width: 8),*/
         ],
       ),
       body: GridView.builder(
@@ -132,15 +102,17 @@ class _HomeScreenState extends State<HomeScreen> {
           final product = DataService.products[index];
           return ProductCard(
             product: product,
-            onAddToCart: () => _addToCart(product),
+            onAddToCart: () => context.read<CartProvider>().addToCart(product),
           );
         },
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _goToCart,
+        onPressed: () {
+          Navigator.pushNamed(context, AppRoutes.cart);
+        },
         backgroundColor: AppColors.secondary,
         child: Badge(
-          label: Text(_cart.length.toString()),
+          label: Text(cart.itemCount.toString()),
           child: const Icon(Icons.shopping_cart, color: AppColors.primary),
         ),
       ),
