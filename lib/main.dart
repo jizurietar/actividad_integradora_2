@@ -7,13 +7,20 @@ import 'screens/orders_screen.dart';
 import 'services/data_service.dart';
 import 'utils/constants.dart';
 import 'models/product.dart';
+import 'package:provider/provider.dart';
+import 'providers/cart_provider.dart';
 
 void main() async {
   //Inicializa y conecta el motor de Flutter
   WidgetsFlutterBinding.ensureInitialized();
   // Cargar datos JSON al inicio
   await DataService.loadData();
-  runApp(const MainApp());
+  runApp(
+    ChangeNotifierProvider<CartProvider>(
+      create: (context) => CartProvider(),
+      child: const MainApp(),
+    ),
+  );
 }
 
 class MainApp extends StatelessWidget {
