@@ -20,14 +20,13 @@ class ProductCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Imagen (simulada con placeholder)
           Expanded(
             flex: 2,
             child: ClipRRect(
               borderRadius: const BorderRadius.vertical(
                 top: Radius.circular(16),
               ),
-              child: Image.network(
+              child: Image.asset(
                 product.imageUrl,
                 width: double.infinity,
                 fit: BoxFit.cover,
