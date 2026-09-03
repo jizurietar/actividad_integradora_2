@@ -3,6 +3,7 @@ import '../models/order.dart';
 import '../services/order_service.dart';
 import '../services/data_service.dart';
 import '../utils/constants.dart';
+import '../widgets/order_card.dart';
 
 class OrdersScreen extends StatefulWidget {
   const OrdersScreen({super.key});
@@ -41,7 +42,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
             onPressed: () {
               OrderService.deleteOrder(orderId);
               Navigator.pop(context);
-              _loadOrders(); // recargar lista
+              _loadOrders();
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
                   content: Text('Orden eliminada'),
@@ -58,7 +59,6 @@ class _OrdersScreenState extends State<OrdersScreen> {
   }
 
   void _editOrder(Order order) {
-    // Mostrar un diálogo para cambiar el estado
     OrderStatus? selectedStatus = order.status;
 
     showDialog(
@@ -146,61 +146,10 @@ class _OrdersScreenState extends State<OrdersScreen> {
               itemCount: _userOrders.length,
               itemBuilder: (context, index) {
                 final order = _userOrders[index];
-                return Card(
-                  elevation: 3,
-                  margin: const EdgeInsets.only(bottom: 12),
-                  child: Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Orden #${order.id.substring(0, 8)}',
-                              style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16,
-                              ),
-                            ),
-                            Chip(
-                              label: Text(
-                                order.status.name.toUpperCase(),
-                                style: const TextStyle(color: Colors.white),
-                              ),
-                              backgroundColor:
-                                  order.status == OrderStatus.pending
-                                  ? Colors.orange
-                                  : order.status == OrderStatus.completed
-                                  ? Colors.green
-                                  : Colors.red,
-                            ),
-                          ],
-                        ),
-                        const Divider(),
-                        Text('Fecha: ${order.date.toLocal()}'),
-                        Text('Total: \$${order.total.toStringAsFixed(2)}'),
-                        Text('Productos: ${order.products.length}'),
-                        const SizedBox(height: 8),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            IconButton(
-                              icon: const Icon(Icons.edit, color: Colors.blue),
-                              onPressed: () => _editOrder(order),
-                              tooltip: 'Modificar',
-                            ),
-                            IconButton(
-                              icon: const Icon(Icons.delete, color: Colors.red),
-                              onPressed: () => _deleteOrder(order.id),
-                              tooltip: 'Eliminar',
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
+                return OrderCard(
+                  order: order,
+                  onEdit: () => _editOrder(order),
+                  onDelete: () => _deleteOrder(order.id),
                 );
               },
             ),
