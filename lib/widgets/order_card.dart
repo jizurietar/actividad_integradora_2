@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../models/order.dart';
-import '../utils/constants.dart';
 
 class OrderCard extends StatelessWidget {
   final Order order;

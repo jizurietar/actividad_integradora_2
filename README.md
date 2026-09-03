@@ -94,6 +94,24 @@ Se utiliza `setState` en:
 
 ![I](capturas/image09.png)
 
+
+
+### Unidad integradora 3 campos adicionales
+
+- **Estructura del proyecto**
+
+![J](capturas/image10.png)
+
+- **Agregar dependencia del provider**
+
+ dependencies:
+
+    flutter:
+        sdk: flutter
+    provider: ^6.0.0
+    shared_preferences: ^2.2.0
+
+
 ### Instrucciones para ejecutar
 1. Clonar el repositorio.
 2. Ejecutar `flutter pub get` para instalar dependencias.
