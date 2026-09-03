@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'screens/login_screen.dart';
 import 'screens/home_screen.dart';
 import 'screens/cart_screen.dart';
 import 'screens/orders_screen.dart';
 import 'services/data_service.dart';
 import 'utils/constants.dart';
-import 'models/product.dart';
 import 'package:provider/provider.dart';
 import 'providers/cart_provider.dart';
+import 'services/order_service.dart';
 
 void main() async {
   //Inicializa y conecta el motor de Flutter
   WidgetsFlutterBinding.ensureInitialized();
   // Cargar datos JSON al inicio
   await DataService.loadData();
+  // Inicializar contador de órdenes
+  await OrderService.initCounter();
   runApp(
     ChangeNotifierProvider<CartProvider>(
       create: (context) => CartProvider(),

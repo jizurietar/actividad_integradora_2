@@ -21,7 +21,7 @@ class ProductCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
-            flex: 2,
+            flex: 6,
             child: ClipRRect(
               borderRadius: const BorderRadius.vertical(
                 top: Radius.circular(16),
@@ -38,7 +38,7 @@ class ProductCard extends StatelessWidget {
             ),
           ),
           Expanded(
-            flex: 1,
+            flex: 4,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
@@ -70,6 +70,7 @@ class ProductCard extends StatelessWidget {
                       color: AppColors.primary,
                       padding: EdgeInsets.zero,
                       constraints: const BoxConstraints(),
+                      visualDensity: VisualDensity.compact,
                     ),
                   ),
                 ],

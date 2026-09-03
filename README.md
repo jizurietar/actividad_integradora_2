@@ -125,6 +125,11 @@ Se utiliza `setState` en:
 
 ![M](capturas/image13.png)
 
+- Automatizando el proceso de las ordenes con numeracion dinamica
+
+![M](capturas/image14.png)
+
+
 **Migración a Provider (Estado Global)**
 
 - Se creó un CartProvider basado en ChangeNotifier que centraliza productos, cantidades y totales.
@@ -146,6 +151,8 @@ Se utiliza `setState` en:
 - Cambio de Image.network a Image.asset para mostrar correctamente las imágenes locales.
 
 - Simplificación del flujo de navegación sin necesidad de pasar listas por rutas.
+
+- Generacion automatica de ordenes por usuarios.
 
 **Nuevos Widgets Reutilizables**
 

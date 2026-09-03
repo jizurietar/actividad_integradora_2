@@ -16,7 +16,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  late User _currentUser;
+  User? _currentUser;
 
   @override
   void initState() {
@@ -24,10 +24,35 @@ class _HomeScreenState extends State<HomeScreen> {
     _loadCurrentUser();
   }
 
+  /*
   void _loadCurrentUser() {
     // Tomamos el primer usuario de la lista (en una app real usaríamos el email guardado)
     // Como simplificación, usamos el primero (Ana)
     _currentUser = DataService.users.first;
+  }
+*/
+  Future<void> _loadCurrentUser() async {
+    // Obtener el email guardado en SharedPreferences
+    final prefs = await SharedPreferences.getInstance();
+    final email = prefs.getString('user_email');
+
+    if (email != null) {
+      // Buscar al usuario por email en la lista de usuarios
+      final user = DataService.users.firstWhere(
+        (u) => u.email == email,
+        orElse: () => DataService
+            .users
+            .first, // Si no existe, usa el primero como fallback
+      );
+      setState(() {
+        _currentUser = user;
+      });
+    } else {
+      // Si no hay sesión, redirigir al login
+      if (mounted) {
+        Navigator.pushReplacementNamed(context, AppRoutes.login);
+      }
+    }
   }
 
   Future<void> _logout() async {
@@ -64,6 +89,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // Si el usuario aún no carga, mostrar un loading (opcional)
+    if (_currentUser == null) {
+      return const Scaffold(body: Center(child: CircularProgressIndicator()));
+    }
+
     final cart = context.watch<CartProvider>();
 
     return Scaffold(
@@ -83,7 +113,7 @@ class _HomeScreenState extends State<HomeScreen> {
             onTap: _logout,
             child: CircleAvatar(
               radius: 16,
-              backgroundImage: AssetImage(_currentUser.avatarUrl),
+              backgroundImage: AssetImage(_currentUser!.avatarUrl),
             ),
           ),
           const SizedBox(width: 8),
@@ -95,7 +125,7 @@ class _HomeScreenState extends State<HomeScreen> {
           crossAxisCount: 2,
           crossAxisSpacing: 12,
           mainAxisSpacing: 12,
-          childAspectRatio: 0.75,
+          childAspectRatio: 0.60,
         ),
         itemCount: DataService.products.length,
         itemBuilder: (context, index) {

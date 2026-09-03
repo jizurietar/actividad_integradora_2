@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../models/order.dart';
 import '../services/order_service.dart';
 import '../services/data_service.dart';
@@ -13,18 +14,40 @@ class OrdersScreen extends StatefulWidget {
 }
 
 class _OrdersScreenState extends State<OrdersScreen> {
-  late List<Order> _userOrders;
+  List<Order> _userOrders = [];
+  String? _userId;
 
   @override
   void initState() {
     super.initState();
-    _loadOrders();
+    _loadUserAndOrders();
+  }
+
+  Future<void> _loadUserAndOrders() async {
+    final prefs = await SharedPreferences.getInstance();
+    final email = prefs.getString('user_email');
+
+    if (email != null) {
+      // Buscar el usuario por email
+      final user = DataService.users.firstWhere(
+        (u) => u.email == email,
+        orElse: () => DataService.users.first,
+      );
+      _userId = user.id;
+      _loadOrders();
+    } else {
+      // Si no hay sesión, volver al login
+      if (mounted) {
+        Navigator.pushReplacementNamed(context, AppRoutes.login);
+      }
+    }
   }
 
   void _loadOrders() {
-    final userId = DataService.users.first.id;
-    _userOrders = OrderService.getOrdersByUser(userId);
-    setState(() {});
+    if (_userId != null) {
+      _userOrders = OrderService.getOrdersByUser(_userId!);
+      setState(() {});
+    }
   }
 
   void _deleteOrder(String orderId) {

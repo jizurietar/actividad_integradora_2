@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:provider/provider.dart';
-import '../models/order.dart';
 import '../providers/cart_provider.dart';
 import '../services/order_service.dart';
 import '../services/data_service.dart';
@@ -34,8 +34,18 @@ class _CartScreenState extends State<CartScreen> {
             child: const Text('Cancelar'),
           ),
           ElevatedButton(
-            onPressed: () {
-              final userId = DataService.users.first.id;
+            onPressed: () async {
+              // Obtener el email guardado
+              final prefs = await SharedPreferences.getInstance();
+              final email = prefs.getString('user_email');
+
+              // Buscar el usuario
+              final user = DataService.users.firstWhere(
+                (u) => u.email == email,
+                orElse: () => DataService.users.first,
+              );
+
+              final userId = user.id;
               final products = cart.getExpandedProductList();
               OrderService.createOrder(userId, products, cart.total);
 
