@@ -111,6 +111,55 @@ Se utiliza `setState` en:
     provider: ^6.0.0
     shared_preferences: ^2.2.0
 
+**Imagenes capturadas**
+
+- Instalacion del paquete
+
+![K](capturas/image11.png)
+
+- Agregando el cart_provider
+
+![L](capturas/image12.png)
+
+- Capturando el funcionamiento del provider
+
+![M](capturas/image13.png)
+
+**Migración a Provider (Estado Global)**
+
+- Se creó un CartProvider basado en ChangeNotifier que centraliza productos, cantidades y totales.
+
+- Se usa notifyListeners() para actualizar automáticamente las pantallas.
+
+- Se eliminaron los argumentos en la navegación; el carrito ahora es accesible desde cualquier widget.
+
+**Sincronización Reactiva**
+
+- Implementación de ChangeNotifierProvider en main.dart.
+
+- Uso de context.watch en HomeScreen y CartScreen para reflejar cambios en tiempo real.
+
+- El badge del carrito se actualiza instantáneamente al agregar productos.
+
+**Corrección de Errores**
+
+- Cambio de Image.network a Image.asset para mostrar correctamente las imágenes locales.
+
+- Simplificación del flujo de navegación sin necesidad de pasar listas por rutas.
+
+**Nuevos Widgets Reutilizables**
+
+- Se añadió OrderCard para listar pedidos de forma consistente.
+
+- ProductCard se mantiene como componente modular del catálogo.
+
+**Resultado Final**
+
+- Código más limpio, escalable y profesional.
+
+- Cumplimiento total de los requisitos de la actividad.
+
+- Base sólida para futuras mejoras como persistencia de datos o usuarios dinámicos.
 
 ### Instrucciones para ejecutar
 1. Clonar el repositorio.
